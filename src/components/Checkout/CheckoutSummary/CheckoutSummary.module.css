@@ -1,0 +1,18 @@
+.summary {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.resetButton {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #e76f51;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.resetButton:hover {
+  background-color: #d65a3d;
+}

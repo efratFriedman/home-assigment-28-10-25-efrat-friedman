@@ -1,0 +1,45 @@
+.productItem {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.details {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.buttons button {
+  padding: 0.3rem 0.6rem;
+  background-color: #2a9d8f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #21867a;
+}
+
+.deleteButton {
+  background-color: #e76f51;
+}
+
+.deleteButton:hover {
+  background-color: #d65a3d;
+}

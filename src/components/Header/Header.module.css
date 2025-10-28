@@ -1,0 +1,51 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: white; 
+    padding: 10px 20px; 
+    border-bottom: 1px solid #ddd; 
+    font-family: Arial, sans-serif; 
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 20px; 
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333; 
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+
+.nav a:first-child { 
+    color: #f5a623;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    color: #f5a623; 
+}
+
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-right: 30px; 
+}
+
+.cart {
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    color: black; 
+}
+

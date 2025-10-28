@@ -1,0 +1,14 @@
+.completeButton {
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background-color: #2a9d8f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.completeButton:hover {
+  background-color: #21867a;
+}

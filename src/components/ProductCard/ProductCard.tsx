@@ -18,15 +18,18 @@ export default function ProductCard({ id, title, price, description, category, i
 
     return (
         <div className={styles.card} key={id}>
-            <img src={image} alt={title} className={styles.image} />
+            <div className={styles.image}>
+                <img src={image} alt={title} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </div>
             <h3 className={styles.title}>{title}</h3>
-            <p className={styles.price}>${price}</p>
-            <p className={styles.description}>{description}</p>
             <p className={styles.category}>{category}</p>
-
-            <button className={styles.addButton} onClick={() => addItem({ id, title, description, price, category, image, quantity: 1 })
-            }>
-                Add to Cart {quantity > 0 && `(${quantity})`}
+            <p className={styles.price}>{price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
+            <p className={styles.description}>{description}</p>
+            <button
+                className={styles.addButton}
+                onClick={() => addItem({ id, title, description, price, category, image, quantity: 1 })}
+            >
+                {quantity > 0 ? `In Cart (${quantity})` : 'Add to Cart'}
             </button>
         </div>
     );

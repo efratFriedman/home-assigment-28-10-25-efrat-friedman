@@ -23,6 +23,8 @@
 }
 
 
+
+
 .nav a:first-child { 
     color: #f5a623;
     font-weight: bold;
@@ -49,3 +51,37 @@
     color: black; 
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* רווח יפה בין הלב לעגלה */
+}
+
+.wishlist {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: #ffa500;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+
+.cart {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}

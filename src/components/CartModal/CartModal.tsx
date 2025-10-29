@@ -1,9 +1,9 @@
 "use client";
 
-import { Product } from "@/store/useCartStore";
 import useCartStore from "@/store/useCartStore";
 import { useRouter } from "next/navigation";
 import styles from "@/components/CartModal/CartModal.module.css";
+import { Product } from "@/types/Product";
 
 interface CartModalProps {
   onClose: () => void;
@@ -30,14 +30,14 @@ export default function CartModal({ onClose }: CartModalProps) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
-        {/* כותרת וכפתור סגירה */}
+     
         <h2>Your Cart ({products.length})</h2>
         <button className={styles.closeButton} onClick={onClose}>
           ✖
         </button>
 
         {products.length === 0 ? (
-          // אם העגלה ריקה
+          
           <p>Your cart is empty</p>
         ) : (
           <>

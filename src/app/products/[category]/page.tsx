@@ -19,7 +19,7 @@ export default function CategoryPage() {
     electronics: "electronics",
   };
 
-  const apiCategory = urlCategory ? categoryMap[urlCategory.toLowerCase()] : undefined;
+  const apiCategory = urlCategory ? categoryMap[urlCategory] : undefined;
 
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);

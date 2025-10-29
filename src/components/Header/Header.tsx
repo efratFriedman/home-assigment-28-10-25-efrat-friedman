@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import useCartStore from "@/store/useCartStore";
+import useWishlistStore from "@/store/useWishListStore";
 import Link from "next/link";
 import CartModal from "@/components/CartModal/CartModal";
 import styles from "./Header.module.css";
+import { AiOutlineHeart } from "react-icons/ai"; // לב ריק
 
 export default function Header() {
   const cartCount = useCartStore((state) => state.cartCount);
+  const wishlistCount = useWishlistStore((state) => state.wishlist.length);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
@@ -24,15 +27,21 @@ export default function Header() {
           <Link href="/products/jewelery">Jewelery</Link>
           <Link href="/products/electronics">Electronics</Link>
           <Link href="/contact">Contact Us</Link>
-          {/* <Link href="/checkout">Check out</Link> */}
         </nav>
 
-        <div
-          className={styles.cart}
-          style={{ cursor: "pointer" }}
-          onClick={() => setIsCartOpen(true)}
-        >
-          🛒 Cart: {cartCount} items
+        <div className={styles.actions}>
+          <div className={styles.icons}>
+            <Link href="/wishlist" className={styles.wishlist}>
+              <AiOutlineHeart size={22} color="black" />
+            </Link>
+
+            <div
+              className={styles.cart}
+              onClick={() => setIsCartOpen(true)}
+            >
+              🛒 {cartCount} items
+            </div>
+          </div>
         </div>
       </header>
 

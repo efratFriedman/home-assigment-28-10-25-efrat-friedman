@@ -2,31 +2,50 @@
 
 import { useState } from "react";
 import useCartStore from "@/store/useCartStore";
-import useWishlistStore from "@/store/useWishListStore";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import CartModal from "@/components/CartModal/CartModal";
 import styles from "./Header.module.css";
-import { AiOutlineHeart } from "react-icons/ai"; // לב ריק
+import { AiOutlineHeart } from "react-icons/ai";
 
 export default function Header() {
   const cartCount = useCartStore((state) => state.cartCount);
-  const wishlistCount = useWishlistStore((state) => state.wishlist.length);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const pathname = usePathname();
+
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/products/men", label: "Mens" },
+    { href: "/products/women", label: "Womens" },
+    { href: "/products/jewelery", label: "Jewelery" },
+    { href: "/products/electronics", label: "Electronics" },
+    { href: "/contact", label: "Contact Us" },
+  ];
 
   return (
     <>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <img src="/imgs/logo.png" alt="Logo" style={{ height: "40px" }} />
+          <Link href="/">
+            <img src="/imgs/logo.png" alt="Logo" style={{ height: "40px", cursor: "pointer" }} />
+          </Link>
         </div>
 
         <nav className={styles.nav}>
-          <Link href="/">Home</Link>
-          <Link href="/products/men">Mens</Link>
-          <Link href="/products/women">Womens</Link>
-          <Link href="/products/jewelery">Jewelery</Link>
-          <Link href="/products/electronics">Electronics</Link>
-          <Link href="/contact">Contact Us</Link>
+          {links.map((link) => {
+            const isActive =
+              pathname === link.href || pathname.startsWith(link.href + "/");
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`${styles.navLink} ${isActive ? styles.active : ""}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className={styles.actions}>
@@ -35,10 +54,7 @@ export default function Header() {
               <AiOutlineHeart size={22} color="black" />
             </Link>
 
-            <div
-              className={styles.cart}
-              onClick={() => setIsCartOpen(true)}
-            >
+            <div className={styles.cart} onClick={() => setIsCartOpen(true)}>
               🛒 {cartCount} items
             </div>
           </div>

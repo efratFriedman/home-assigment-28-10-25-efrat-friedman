@@ -1,24 +1,10 @@
+import CartState from "@/types/CartState";
+import { Product } from "@/types/Product";
 import { create } from "zustand";
 
-export interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-  image: string;
-  quantity: number;
-}
 
-interface CartState {
-  products: Product[];
-  cartCount: number;
-  addItem: (product: Product) => void;
-  removeItem: (id: number) => void;
-  deleteItem: (id: number) => void;
-  resetCart: () => void;
-  setProducts: (products: Product[]) => void;
-}
+
+
 
 const saveToLocalStorage = (products: Product[], cartCount: number) => {
   localStorage.setItem("cart", JSON.stringify({ products, cartCount }));

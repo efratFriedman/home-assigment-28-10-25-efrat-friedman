@@ -1,14 +1,11 @@
 import { Product } from "@/types/Product";
+import ProductState from "@/types/ProductState";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 
 
-interface ProductState {
-  selectedProduct: Product | null;
-  setSelectedProduct: (product: Product) => void;
-  clearProduct: () => void;
-}
+
 
 const useProductStore = create<ProductState>()(
   persist(

@@ -28,9 +28,7 @@ export default function WishlistPage() {
               src={product.image}
               alt={product.title}
               className={styles.image}
-              onClick={() =>
-                router.push(`/products/${product.category}/${product.id}`)
-              }
+             
             />
             <h3>{product.title}</h3>
             <p>${product.price}</p>

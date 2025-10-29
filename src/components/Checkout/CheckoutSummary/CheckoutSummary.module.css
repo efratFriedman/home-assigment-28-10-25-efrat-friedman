@@ -16,3 +16,24 @@
 .resetButton:hover {
   background-color: #d65a3d;
 }
+
+.summary { 
+  display: flex; 
+  align-items: center;
+}
+
+.totalLabel {
+  font-family: Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900; 
+  color: #ffa500;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.totalAmount {
+  font-family: Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: black; 
+}

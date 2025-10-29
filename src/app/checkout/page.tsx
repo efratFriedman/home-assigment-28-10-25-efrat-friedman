@@ -1,3 +1,5 @@
+// src/app/checkout/CheckoutPage.tsx (Unchanged from your prompt, using new CSS)
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -11,6 +13,7 @@ export default function CheckoutPage() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    // The sum calculation remains the same
     const sum = products.reduce((acc, p) => acc + p.price * p.quantity, 0);
     setTotal(sum);
   }, [products]);
@@ -24,8 +27,10 @@ export default function CheckoutPage() {
 
   return (
     <div className={styles.container}>
-      <h2>Checkout</h2>
-
+      {/* Heading is styled to separate "Order" and "Summary" */}
+      <h2>Order <span style={{ color: '#ffa500' }}>Summary</span></h2> 
+      {/* The in-line span for "Summary" color overrides the H2 color just for that word */}
+      
       <div className={styles.productList}>
         {products.map((p) => (
           <CheckoutProduct
@@ -37,12 +42,15 @@ export default function CheckoutPage() {
           />
         ))}
       </div>
+      
+      {/* This summary section contains the total and will be aligned with the button */}
+      <div className={styles.summaryRow}>
+          <CheckoutSummary total={total} onClear={resetCart} />
+          <button className={styles.completeButton} onClick={handleCompleteOrder}>
+            Complete Order
+          </button>
+      </div>
 
-      <CheckoutSummary total={total} onClear={resetCart} />
-
-      <button className={styles.completeButton} onClick={handleCompleteOrder}>
-        Complete Order
-      </button>
     </div>
   );
 }

@@ -16,30 +16,29 @@
 .details {
   flex: 1;
 }
+.details h3{
+  font-weight: bold;
+}
 
 .buttons {
   display: flex;
+  align-items: center; 
   gap: 0.5rem;
   margin-top: 0.5rem;
 }
 
+.buttons p {
+  margin: 0;
+  padding: 0; 
+    margin-left: 0.25rem; 
+  margin-right: 0.25rem; 
+    font-weight: bold; 
+}
+
 .buttons button {
   padding: 0.3rem 0.6rem;
-  background-color: #2a9d8f;
-  color: #fff;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.buttons button:hover {
-  background-color: #21867a;
-}
-
-.deleteButton {
-  background-color: #e76f51;
-}
-
-.deleteButton:hover {
-  background-color: #d65a3d;
 }

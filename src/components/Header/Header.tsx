@@ -19,8 +19,8 @@ export default function Header() {
 
         <nav className={styles.nav}>
           <Link href="/">Home</Link>
-          <Link href="/products/men's clothing">Mens</Link>
-          <Link href="/products/women's clothing">Womens</Link>
+          <Link href="/products/men">Mens</Link>
+          <Link href="/products/women">Womens</Link>
           <Link href="/products/jewelery">Jewelery</Link>
           <Link href="/products/electronics">Electronics</Link>
           <Link href="/contact">Contact Us</Link>

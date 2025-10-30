@@ -8,4 +8,5 @@ export default interface CartState {
   deleteItem: (id: number) => void;
   resetCart: () => void;
   setProducts: (products: Product[]) => void;
+  sum: number;
 }

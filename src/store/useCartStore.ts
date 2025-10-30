@@ -2,10 +2,6 @@ import CartState from "@/types/CartState";
 import { Product } from "@/types/Product";
 import { create } from "zustand";
 
-
-
-
-
 const saveToLocalStorage = (products: Product[], cartCount: number) => {
   localStorage.setItem("cart", JSON.stringify({ products, cartCount }));
 };
@@ -13,6 +9,8 @@ const saveToLocalStorage = (products: Product[], cartCount: number) => {
 const useCartStore = create<CartState>((set) => ({
   products: [],
   cartCount: 0,
+  sum: 0,
+
 
   setProducts: (products) => {
     const cartCount = products.reduce((sum, p) => sum + p.quantity, 0);
@@ -35,6 +33,7 @@ const useCartStore = create<CartState>((set) => ({
 
       const cartCount = updatedProducts.reduce((sum, p) => sum + p.quantity, 0);
       saveToLocalStorage(updatedProducts, cartCount);
+      set({ sum: updatedProducts.reduce((sum, p) => sum + p.price * p.quantity, 0) });
       return { products: updatedProducts, cartCount };
     }),
 
@@ -44,9 +43,10 @@ const useCartStore = create<CartState>((set) => ({
         .map((p) =>
           p.id === id ? { ...p, quantity: p.quantity - 1 } : p
         )
-        .filter((p) => p.quantity > 0); 
+        .filter((p) => p.quantity > 0);
       const cartCount = updatedProducts.reduce((sum, p) => sum + p.quantity, 0);
       saveToLocalStorage(updatedProducts, cartCount);
+      set({ sum: updatedProducts.reduce((sum, p) => sum + p.price * p.quantity, 0) });
       return { products: updatedProducts, cartCount };
     }),
 
@@ -55,13 +55,15 @@ const useCartStore = create<CartState>((set) => ({
       const updatedProducts = state.products.filter((p) => p.id !== id);
       const cartCount = updatedProducts.reduce((sum, p) => sum + p.quantity, 0);
       saveToLocalStorage(updatedProducts, cartCount);
+      set({ sum: updatedProducts.reduce((sum, p) => sum + p.price * p.quantity, 0) });
       return { products: updatedProducts, cartCount };
     }),
 
   resetCart: () => {
     localStorage.removeItem("cart");
-    set({ products: [], cartCount: 0 });
+    set({ products: [], cartCount: 0, sum: 0 });
   },
+
 }));
 
 if (typeof window !== "undefined") {

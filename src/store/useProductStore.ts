@@ -3,10 +3,6 @@ import ProductState from "@/types/ProductState";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-
-
-
-
 const useProductStore = create<ProductState>()(
   persist(
     (set) => ({
